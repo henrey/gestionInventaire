@@ -1,0 +1,30 @@
+{% extends 'base.html.twig'%}
+{% block body %}
+    <table id="liste" class="table table-striped table-bordered" cellspacing="0" style="width:100%" >
+        <thead>
+            <tr>
+                <th><label>Salle</label></th>
+                <th><label>Site</label></th>
+                <th><label>Actions</label></th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                {% for salle in listeSalles %}
+                    <tr>
+                        <td>{{salle.nomSalle}}</td>
+                        <td>{{salle.site.nomSite}}</td>
+                        <td><a href="{{ url('supprimer_salle',{'id':salle.id})}}">Supprimer</a></td>
+                    </tr>
+                {% endfor %}
+            
+        </tbody>
+    </table>
+    {# JavaScripts #}
+        
+            
+    {# end JavaScripts #}
+        
+        
+{% endblock %}
+    

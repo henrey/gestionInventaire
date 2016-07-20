@@ -1,0 +1,102 @@
+accueil_application:
+    path:    /
+    defaults: {_controller: OPTEquipementsBundle:Default:index}
+
+# Salles routing
+liste_salles:
+    path:    /listeSalles
+    defaults: {_controller: OPTEquipementsBundle:Salles:Lister }
+    
+add_salle:
+    path:    /addSalle
+    defaults: {_controller: OPTEquipementsBundle:Salles:Add }
+
+supprimer_salle:
+    path:    /supprimerSalle/{id}
+    defaults:
+        _controller: OPTEquipementsBundle:Salles:Supprimer
+        id:
+# Sites routing
+add_site:
+    path:    /addSite
+    defaults: {_controller: OPTEquipementsBundle:Sites:Add }
+liste_sites:
+    path:    /listeSites
+    defaults: {_controller: OPTEquipementsBundle:Sites:Lister}
+
+# Constructeur routing
+add_constructeur:
+    path:    /addConstructeur
+    defaults: {_controller: OPTEquipementsBundle:Constructeurs:Add }
+liste_constructeurs:
+    path:    /listeConstructeurs
+    defaults: {_controller: OPTEquipementsBundle:Constructeurs:Lister}
+detail_constructeur:
+    path:    /detailConstructeur/{id}
+    defaults: {_controller: OPTEquipementsBundle:Constructeurs:Detail}
+# Contrat routing
+add_contrat:
+    path:    /addContrat
+    defaults: {_controller: OPTEquipementsBundle:Contrats:Add }
+
+liste_contrats:
+    path:    /listeContrats
+    defaults: {_controller: OPTEquipementsBundle:Contrats:Lister}
+
+# Identification routing
+add_identification:
+    path:    /addIdentification
+    defaults: {_controller: OPTEquipementsBundle:Identifications:Add}
+
+# Equipement routing
+add_equipement:
+    path:    /addEquipement
+    defaults: {_controller: OPTEquipementsBundle:Equipements:Add}
+    
+detail_equipement:
+    path:    /detailEquipement/{id}
+    defaults: 
+        _controller: OPTEquipementsBundle:Equipements:Detail
+        id:
+liste_equipements:
+    path:    /listeEquipements/{tri}
+    defaults:
+        _controller: OPTEquipementsBundle:Equipements:Lister
+        tri: dateModification
+liste_json_equipements:
+    path:    /api/listeEquipements
+    defaults:
+        _controller: OPTEquipementsBundle:Equipements:ListerJson
+        
+modifier_equipement:
+    path:    /modifierEquipements/{id}
+    defaults:
+        _controller: OPTEquipementsBundle:Equipements:Modifier
+        id:
+
+delete_equipements:
+    path:    /deleteEquipement/{id}
+    defaults:
+        _controller: OPTEquipementsBundle:Equipements:Delete
+        id:
+historique_equipement:
+    path:    /historiqueEquipement/{id}
+    defaults:
+        _controller: OPTEquipementsBundle:Equipements:Historique
+        id:
+
+recherche_equipements:
+    path:    /rechercheEquipements
+    defaults:
+        _controller: OPTEquipementsBundle:Recherche:Recherche
+        critere:
+rechercheEquipements:
+    path:    /rechercheEquip
+    defaults:
+        _controller: OPTEquipementsBundle:Recherche:RechercheEquipements
+        
+recherche_path:
+    path:    /recherche/{critere}
+    defaults: 
+        _controller: OPTEquipementsBundle:Recherche:Recherche
+        critere:

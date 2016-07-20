@@ -1,0 +1,19 @@
+{% extends "base.html.twig"%}
+{% block body %}
+    <table id="listeContrats" class="table table-striped table-bordered" cellspacing="0" style="width:100%" >
+        <thead>
+            <tr>
+                <th><label>Nom du contrat</label></th>
+                <th><label>Date fin de contrat</label></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contrat in listeContrats %}
+                <tr>
+                    <td>{{ contrat.nomContrat }}</td>
+                    <td>{{ contrat.dateFinContrat|date('d/m/Y')}}</td>
+                </tr>
+            {%endfor %}
+        </tbody>
+    </table>
+{% endblock%}

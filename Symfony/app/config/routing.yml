@@ -1,0 +1,12 @@
+opt_equipements:
+    resource: "@OPTEquipementsBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
+#opt_sites:
+ #   resource: "@OPTSitesBundle/Resources/config/routing.yml"
+  #  prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

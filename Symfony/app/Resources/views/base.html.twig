@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Gestion{% endblock %}</title>
+        {% block stylesheets %}
+            
+            <link rel="stylesheet" href="{{ asset('bundles/optequipements/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('bundles/optequipements/css/bootstrap-theme.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('bundles/optequipements/css/dataTables.bootstrap.css') }}"  />
+            
+        {% endblock %}
+            <link rel="icon" type="image/x-icon" href="{{ asset('Logo_OPT.ico') }}" />
+            </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-default ">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">              
+                <a class="navbar-brand" href="{{path('accueil_application')}}">Accueil</a>
+                <ul class="nav navbar-nav">                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Equipements <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="{{path('add_equipement')}}">Ajouter un équipement</a></li>
+                      <li><a href="{{path('liste_equipements')}}">Liste equipements</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Salles <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="{{path('add_salle')}}">Ajouter une salle</a></li>
+                      <li><a href="{{path('liste_salles')}}">Liste des salles</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sites <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="{{path('add_site')}}">Ajouter un Site</a></li>
+                      <li><a href="{{path('liste_sites')}}">Liste des salles</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Constructeurs <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="{{path('add_constructeur')}}">Ajouter un constructeur</a></li>
+                      <li><a href="{{path('liste_constructeurs')}}">Liste des constructeurs</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contrats <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="{{path('add_contrat')}}">Ajouter un contrat</a></li>
+                      <li><a href="{{path('liste_contrats')}}">Liste des contrats</a></li>
+                    </ul>
+                  </li>
+                </ul>
+            </div>
+                <form class="navbar-form navbar-right" role="search" action="{{path('rechercheEquipements')}}" method="GET">
+                    <div class="form-group">
+                        <input name="critere" type="text" class="form-control" placeholder="Recherche un équipement" style="font-style: italic" >
+                    </div>
+                    <button type="submit" class="btn btn-default">Rechercher</button>
+                </form>
+          </div>
+        </nav>
+        </header>
+        
+        <div class="center-block">
+            <div class="row">
+                <div class="col-md-12">
+                    {% for flash_message in app.session.flashBag.get('notice') %}
+                        <div class="flash-notice ">
+                            <div class="alert alert-success" style="text-align: center;">
+                                <span  ><strong>{{ flash_message }}</strong></span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>          
+                
+            <div class="row" >
+                <div>
+                    {% block titleForm %}{%endblock%}
+                </div>
+                <div id="content" class="container-fluid">     
+                    <div  style="margin-left: 5%;margin-right: 5%">
+                    {% block body %}
+                    {% endblock %}
+                    </div>
+                </div> 
+            </div>
+        </div>
+           
+        
+        
+        {% block javascripts %}
+            
+            {#<script src="{{ asset('bundles/optequipements/js/jquery-1.10.2.min.js') }}"></script>#}
+            <script src="{{ asset('bundles/optequipements/js/jquery-1.12.3.js') }}"></script>
+            <script src="{{ asset('bundles/optequipements/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('bundles/optequipements/js/jquery.dataTables.min.js')}}"></script>
+            <script src="{{ asset('bundles/optequipements/js/dataTables.bootstrap.js')}}"></script>
+            
+            <script>$(document).ready(function() {
+            $('#liste').dataTable();
+            }); 
+            </script>
+            
+            <script>$(document).ready(function() {
+            $('#listeSites').dataTable();
+            }); 
+            </script>
+            <script>$(document).ready(function() {
+            $('#listeConstructeurs').dataTable();
+            }); 
+            </script>
+            <script>$(document).ready(function() {
+            $('#listeContrats').dataTable();
+            }); 
+            </script>
+            
+        {% endblock %}
+    </body>
+</html>

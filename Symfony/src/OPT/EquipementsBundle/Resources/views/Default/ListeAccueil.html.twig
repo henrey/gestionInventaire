@@ -1,0 +1,109 @@
+{% extends "base.html.twig"%}
+{% block body %}
+    <table class="table ">
+        <tr>
+            <td><label>Model</label></td>
+            <td><label>Série</label></td>
+            <td><label>Numéro immo</label></td>
+            <td><label>Date fin garantie</label></td>
+            <td><label>Type</label></td>
+            <td><label>Commentaire</label></td>
+            <td><label>Salle</label></td>
+            <td><label>Armoire</label></td>
+            <td><label>U départ</label></td>
+            <td><label>Nombre U</label></td>
+            <td><label>Nom Logique</label></td>
+            <td><label>Installé par</label></td>
+            <td><label>Date début contrat</label></td>
+            <td><label>Date création</label></td>
+            <td><label>Date modification</label></td>
+            <td><label>Constructeur</label></td>
+            <td><label>Contrat</label></td>
+            <td><label>Actif</label></td>
+            
+            
+        </tr>
+        <tbody>
+            
+        {% for equipement in listeEquipements%}
+            <tr>
+                
+                <td>{{equipement.identification.model}}</td>
+                <td>{{equipement.identification.serie}}</td>
+                <td>{{equipement.identification.numeroImmo}}</td>
+                <td>{{equipement.identification.dateFinGarantie|date('d/m/Y')}}</td>             
+                <td>{{equipement.type}}</td>
+                <td>{{equipement.commentaire}}</td>
+                <td>{{equipement.nomSalle}}</td>
+                <td>{{equipement.commentaire}}</td>
+                <td>{{equipement.uDepart}}</td>
+                <td>{{equipement.nbU}}</td>
+                <td>{{equipement.nomLogique}}</td>
+                <td>{{equipement.qui}}</td>
+                <td>{{equipement.dateDebutContrat|date('d/m/Y')}}</td>
+                <td>{{equipement.dateCreation|date('d/m/Y H:i:s')}}</td>
+                <td>{{equipement.dateModification|date('d/m/Y H:i:s')}}</td>
+                <td>{{equipement.constructeur.nomConstructeur}}</td>
+                <td>{{equipement.contrat.nomContrat}}</td>
+                <td>{{equipement.actif}}</td>
+                <td>
+                    <a href="#" data-toggle="modal" data-target="#detailEquipementModal">Detail</a>
+                    <a href="{{ url('historique_equipement', {'id': equipement.id}) }}">Historique</a>
+                    <a href="{{ url('modifier_equipement', {'id': equipement.id}) }}">Modifier</a>
+                    <a href="{{ url('delete_equipements', {'id': equipement.id}) }}">Supprimer</a>                    
+                    
+                    
+                    
+                    <!-- Button trigger modal -->                    
+                                        
+                    <!-- Modal -->
+                    <div class="modal fade" id="detailEquipementModal" 
+                         tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Détail équipement: {{equipement.nomLogique}}</h4>
+                          </div>
+                          <div class="modal-body">
+                            <ul class="list-group">
+                                <li class="list-group-item"><label>Model:</label> {{equipement.identification.model}}</li>
+                                <li class="list-group-item"><label>Série:</label> {{equipement.identification.serie}}</li>
+                                <li class="list-group-item"><label>Numéro Immo:</label> {{equipement.identification.numeroImmo}}</li>
+                                <li class="list-group-item"><label>Date fin de garantie:</label> {{equipement.identification.dateFinGarantie|date('d/m/Y')}}</li>
+                                <li class="list-group-item"><label>Type:</label> {{equipement.type}}</li>
+                                <li class="list-group-item"><label>Commentaires:</label> {{equipement.commentaire}}</li>
+                                <li class="list-group-item"><label>U de départ:</label> {{equipement.uDepart}}</li>
+                                <li class="list-group-item"><label>Nombre de U:</label> {{equipement.nbU}}</li>
+                                <li class="list-group-item"><label>Nom logique:</label> {{equipement.nomLogique}}</li>
+                                <li class="list-group-item"><label>Installé par:</label> {{equipement.qui}}</li>
+                                <li class="list-group-item"><label>Contrat:</label> {{equipement.contrat.nomContrat}}</li>
+                                <li class="list-group-item"><label>Date début de contrat:</label> {{equipement.dateDebutcontrat|date('d/m/Y')}}</li>
+                                <li class="list-group-item"><label>Date d'installation:</label> {{equipement.installation|date('d/m/Y')}}</li>
+                                <li class="list-group-item"><label>Date de création:</label> {{equipement.dateCreation|date('d/m/Y H:i:s')}}</li>
+                                <li class="list-group-item"><label>Date de modification:</label> {{equipement.dateModification|date('d/m/Y H:i:s')}}</li>
+                                <li class="list-group-item"><label>Armoire:</label> {{equipement.idContenant}}</li>
+                                <li class="list-group-item"><label>Constructeur:</label> {{equipement.constructeur.nomConstructeur}}</li>
+
+                            </ul>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" href="{{ url('modifier_equipement', {'id': equipement.id}) }}">Modifier</button>
+                            <!--<button type="button" class="btn btn-primary">Save changes</button> -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    
+                    
+            </tr>
+            
+        {%endfor%}
+        
+        </tbody>
+    </table>
+{% endblock %}
+    

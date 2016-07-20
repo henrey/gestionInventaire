@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h3>Detail équipement </h3>
+    <ul class="list-group">
+        <li class="list-group-item"><label>Model:</label> {{equipement.identification.model}}</li>
+        <li class="list-group-item"><label>Série:</label> {{equipement.identification.serie}}</li>
+        <li class="list-group-item"><label>Type:</label> {{equipement.identification.type}}</li>
+        <li class="list-group-item"><label>Numéro Immo:</label> {{equipement.identification.numeroImmo}}</li>
+        
+        <li class="list-group-item"><label>Nom logique</label> {{equipement.identification.nomLogique}}</li>
+        
+        <li class="list-group-item"><label>Date fin de garantie:</label> {{equipement.identification.dateFinGarantie|date('d/m/Y')}}</li>
+        <li class="list-group-item"><label>Type équipement:</label> {{equipement.type}}</li>
+        
+        <li class="list-group-item"><label>Commentaires:</label> {{equipement.commentaire}}</li>
+        <li class="list-group-item"><label>Salle:</label> {{equipement.nomSalle}}</li>
+        <li class="list-group-item"><label>U de départ:</label> {{equipement.uDepart}}</li>
+        <li class="list-group-item"><label>Nombre de U:</label> {{equipement.nbU}}</li>
+        <!--<li class="list-group-item"><label>Nom logique:</label> {{equipement.nomLogique}}</li>-->
+        <li class="list-group-item"><label>Installé par:</label> {{equipement.qui}}</li>
+        <li class="list-group-item"><label>Contrat:</label> {{equipement.contrat.nomContrat}}</li>
+        <li class="list-group-item"><label>Date début de contrat:</label> {{equipement.dateDebutcontrat|date('d/m/Y')}}</li>
+        <li class="list-group-item"><label>Date d'installation:</label> {{equipement.installation|date('d/m/Y')}}</li>
+        <li class="list-group-item"><label>Date de création:</label> {{equipement.dateCreation|date('d/m/Y H:i:s')}}</li>
+        <li class="list-group-item"><label>Date de modification:</label> {{equipement.dateModification|date('d/m/Y H:i:s')}}</li>
+        <li class="list-group-item"><label>Contenu dans:</label> {{equipement.nomContenuDans}}</li>
+        <li class="list-group-item"><label>Constructeur:</label> {{equipement.constructeur.nomConstructeur}}</li>
+        
+    </ul>
+        <a href="{{url('historique_equipement',{'id':equipement.id})}}">Historique</a>
+        
+    
+{% endblock %}

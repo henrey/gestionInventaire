@@ -1,0 +1,17 @@
+{%extends 'base.html.twig' %}
+{% block body %}
+    <table id="listeConstructeurs" class="table table-striped table-bordered" cellspacing="0" style="width:100%" >
+        <thead>
+            <tr>
+                <th><label>Constructeur</label></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for constructeur in listeConstructeurs %}
+                <tr>
+                    <td>{{constructeur.nomConstructeur}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{%endblock%}

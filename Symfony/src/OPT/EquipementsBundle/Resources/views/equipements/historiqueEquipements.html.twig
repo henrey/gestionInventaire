@@ -1,0 +1,63 @@
+{% extends "base.html.twig"%}
+{% block body %}
+    <div  style="margin-left: 5%;margin-right: 5%">
+    <table class="table ">
+        <tr>
+            <td><label>Model</label></td>
+            <td><label>Série</label></td>
+            <td><label>Type</label></td>
+            <td><label>Numéro immo</label></td>
+            <td><label>Date fin garantie</label></td>
+            <td><label>Type équipement</label></td>
+            <td><label>Contenu dans</label></td>
+            <td><label>Commentaire</label></td>
+            <td><label>Salle</label></td>
+            <td><label>Armoire</label></td>
+            <td><label>U départ</label></td>
+            <td><label>Nombre U</label></td>
+            <td><label>Nom Logique</label></td>
+            <td><label>Installé par</label></td>
+            <td><label>Date début contrat</label></td>
+            <td><label>Date création</label></td>
+            <td><label>Date modification</label></td>
+            <td><label>Constructeur</label></td>
+            <td><label>Contrat</label></td>
+            <td><label>Actif</label></td>
+            <td><a href="{{ url('modifier_equipement', {'id': equipement.id}) }}">Modifier l'équipement</a></td>
+            
+            
+        </tr>
+        <tbody>
+            
+        {% for equip in listeEquipements%}
+            <tr>
+                
+                <td>{{equip.identification.model}}</td>
+                <td>{{equip.identification.serie}}</td>
+                <td>{{equip.identification.type}}</td>
+                <td>{{equip.identification.numeroImmo}}</td>
+                <td>{{equip.identification.dateFinGarantie|date('d/m/Y')}}</td>             
+                <td>{{equip.type}}</td>
+                <td>{{equip.nomContenuDans}}</td>
+                <td>{{equip.commentaire}}</td>
+                <td>{{equip.nomSalle}}</td>
+                <td>{{equip.commentaire}}</td>
+                <td>{{equip.uDepart}}</td>
+                <td>{{equip.nbU}}</td>
+                <td>{{equip.nomLogique}}</td>
+                <td>{{equip.qui}}</td>
+                <td>{{equip.dateDebutContrat|date('d/m/Y')}}</td>
+                <td>{{equip.dateCreation|date('d/m/Y H:i:s')}}</td>
+                <td>{{equip.dateModification|date('d/m/Y H:i:s')}}</td>
+                <td>{{equip.constructeur.nomConstructeur}}</td>
+                <td>{{equip.contrat.nomContrat}}</td>
+                <td>{{equip.actif}}</td>
+                
+            </tr>
+            
+        {%endfor%}
+        
+        </tbody>
+    </table>
+{% endblock %}
+    
