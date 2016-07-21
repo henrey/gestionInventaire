@@ -12,7 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-
+use Symfony\Component\HttpFoundation\Response;
 
 
 class SallesController extends Controller
@@ -80,5 +80,14 @@ class SallesController extends Controller
         
         return $this->redirectToRoute('liste_salles');
         
+    }
+        public function ListerJsonAction(){
+       
+        $collection = $this->getDoctrine()
+                ->getRepository('OPTEquipementsBundle:Salle')
+                ->findAll();
+        $serializer = $this->get('serializer');
+        $data = $serializer->serialize($collection, 'json');
+        return new response($data);
     }
 }

@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 use Symfony\Component\HttpFoundation\Request;
 use OPT\EquipementsBundle\Form\SiteType;
-
+use Symfony\Component\HttpFoundation\Response;
 class SitesController extends Controller
 {
     public function AddAction(Request $request)
@@ -43,6 +43,14 @@ class SitesController extends Controller
         $listeSites=$repo->findAll();
         return $this->render('OPTEquipementsBundle:sites:listeSites.html.twig',array('listeSites'=>$listeSites));
     }
-    
-    
+    public function ListerJsonAction() {
+
+        $collection = $this->getDoctrine()
+                ->getRepository('OPTEquipementsBundle:Site')
+                ->findAll();
+        $serializer = $this->get('serializer');
+        $data = $serializer->serialize($collection, 'json');
+        return new response($data);
+    }
+
 }

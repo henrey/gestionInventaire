@@ -268,4 +268,15 @@ class EquipementsController extends Controller
     {
         return $this->render('OPTEquipementsBundle:recherche:rechercheForm.html.twig',array('critere'=>$critere));
     }
+    
+    
+    public function ListerJsonAction(){
+       
+        $listeEquipements = $this->getDoctrine()
+                ->getRepository('OPTEquipementsBundle:Equipement')
+                ->findBy(array('actif'=>true));
+        $serializer = $this->get('serializer');
+        $data = $serializer->serialize($listeEquipements, 'json');
+        return new response($data);
+    }
 }

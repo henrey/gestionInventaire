@@ -67,6 +67,16 @@ liste_json_equipements:
     path:    /api/listeEquipements
     defaults:
         _controller: OPTEquipementsBundle:Equipements:ListerJson
+
+liste_json_salles:
+    path:    /api/listeSalles
+    defaults:
+        _controller: OPTEquipementsBundle:Salles:ListerJson        
+
+liste_json_sites:
+    path:    /api/listeSites
+    defaults:
+        _controller: OPTEquipementsBundle:Sites:ListerJson
         
 modifier_equipement:
     path:    /modifierEquipements/{id}
